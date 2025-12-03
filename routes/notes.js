@@ -2,16 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 const { MongoClient } = require("mongodb");
-const url = "mongodb+srv://YUTO:Mitonishi31024@cluster0.gor0enz.mongodb.net/?appName=Cluster0";
+const url = "*********
+";
 const client = new MongoClient(url);
 
 router.get('/', async (req, res) => {
   try {
-    // MongoDB‚ÉÚ‘±
+    // MongoDBï¿½ÉÚ‘ï¿½
     await client.connect();
 
-    const database = client.db('notes');        // ƒf[ƒ^ƒx[ƒX–¼
-    const notes = database.collection('notes'); // ƒRƒŒƒNƒVƒ‡ƒ“–¼
+    const database = client.db('notes');        // ï¿½fï¿½[ï¿½^ï¿½xï¿½[ï¿½Xï¿½ï¿½
+    const notes = database.collection('notes'); // ï¿½Rï¿½ï¿½ï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     const query = { id: 2 };
     const note = await notes.findOne(query);
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
     console.error(err);
     res.status(500).send("Error connecting to database");
   } finally {
-    // –ˆ‰ñ•Â‚¶‚é‚ÆŒø—¦ˆ«‚¢‚Ì‚ÅA•K—v‚È‚çƒRƒƒ“ƒgƒAƒEƒg‚µ‚Ä‚àOK
+    // ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ÆŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ÅAï¿½Kï¿½vï¿½È‚ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½Ä‚ï¿½OK
     await client.close();
   }
 });
