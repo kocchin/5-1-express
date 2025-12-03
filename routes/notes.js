@@ -2,29 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 const { MongoClient } = require("mongodb");
-<<<<<<< HEAD
-const url = "*********
-";
-=======
-const url = "****************";
->>>>>>> 0ef8143ca03e2a2f76414effb4d1057a8e8300d1
+const url = "*********";
 const client = new MongoClient(url);
 
 router.get('/', async (req, res) => {
   try {
-<<<<<<< HEAD
-    // MongoDBï¿½ÉÚ‘ï¿½
+    // MongoDB?¿½ÉÚ‘ï¿½
     await client.connect();
 
-    const database = client.db('notes');        // ï¿½fï¿½[ï¿½^ï¿½xï¿½[ï¿½Xï¿½ï¿½
-    const notes = database.collection('notes'); // ï¿½Rï¿½ï¿½ï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-=======
-    // MongoDBã«æ¥ç¶š
-    await client.connect();
-
-    const database = client.db('notes');        // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å
-    const notes = database.collection('notes'); // ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å
->>>>>>> 0ef8143ca03e2a2f76414effb4d1057a8e8300d1
+    const database = client.db('notes');        // ?¿½f?¿½[?¿½^?¿½x?¿½[?¿½X?¿½?¿½
+    const notes = database.collection('notes'); // ?¿½R?¿½?¿½?¿½N?¿½V?¿½?¿½?¿½?¿½?¿½?¿½
 
     const query = { id: 2 };
     const note = await notes.findOne(query);
@@ -34,11 +21,7 @@ router.get('/', async (req, res) => {
     console.error(err);
     res.status(500).send("Error connecting to database");
   } finally {
-<<<<<<< HEAD
-    // ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ÆŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ÅAï¿½Kï¿½vï¿½È‚ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½Ä‚ï¿½OK
-=======
-    // æ¯å›é–‰ã˜ã‚‹ã¨åŠ¹ç‡æ‚ªã„ã®ã§ã€å¿…è¦ãªã‚‰ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã—ã¦ã‚‚OK
->>>>>>> 0ef8143ca03e2a2f76414effb4d1057a8e8300d1
+    // ?¿½?¿½?¿½?¿½Â‚ï¿½?¿½?¿½ÆŒï¿½?¿½?¿½?¿½?¿½?¿½?¿½?¿½Ì‚ÅA?¿½K?¿½v?¿½È‚ï¿½R?¿½?¿½?¿½?¿½?¿½g?¿½A?¿½E?¿½g?¿½?¿½?¿½Ä‚ï¿½OK
     await client.close();
   }
 });
