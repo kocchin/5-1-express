@@ -1,29 +1,32 @@
 var express = require('express');
 var router = express.Router();
 
-const { MongoClient } = require("mongodb");
-const url = "*********";
-const client = new MongoClient(url);
+// ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒ‡ãƒ¼ã‚¿ï¼ˆãƒãƒ¼ãƒˆå…¨ä»¶ï¼‰
+const responseObjectDataAll = {
+textObject1 : {
+id: 1,
+title: 'ãƒãƒ¼ãƒˆï¼‘ã®ã‚¿ã‚¤ãƒˆãƒ«ã§ã™',
+subTitle: 'ãƒãƒ¼ãƒˆï¼‘ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã§ã™',
+bodyText: 'ãƒãƒ¼ãƒˆï¼‘ã®æœ¬æ–‡ã§ã™'
+},
+textObject2 : {
+id: 2,
+title: 'ãƒãƒ¼ãƒˆï¼’ã®ã‚¿ã‚¤ãƒˆãƒ«ã§ã™',
+subTitle: 'ãƒãƒ¼ãƒˆï¼’ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã§ã™',
+bodyText: 'ãƒãƒ¼ãƒˆï¼’ã®æœ¬æ–‡ã§ã™'
+},
+};
 
-router.get('/', async (req, res) => {
-  try {
-    // MongoDB?¿½ÉÚ‘ï¿½
-    await client.connect();
-
-    const database = client.db('notes');        // ?¿½f?¿½[?¿½^?¿½x?¿½[?¿½X?¿½?¿½
-    const notes = database.collection('notes'); // ?¿½R?¿½?¿½?¿½N?¿½V?¿½?¿½?¿½?¿½?¿½?¿½
-
-    const query = { id: 2 };
-    const note = await notes.findOne(query);
-
-    res.json(note);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error connecting to database");
-  } finally {
-    // ?¿½?¿½?¿½?¿½Â‚ï¿½?¿½?¿½ÆŒï¿½?¿½?¿½?¿½?¿½?¿½?¿½?¿½Ì‚ÅA?¿½K?¿½v?¿½È‚ï¿½R?¿½?¿½?¿½?¿½?¿½g?¿½A?¿½E?¿½g?¿½?¿½?¿½Ä‚ï¿½OK
-    await client.close();
-  }
-});
+/**
+* ãƒ¡ãƒ¢ã‚’å…¨ä»¶å–å¾—ã™ã‚‹API
+* @returns {Object[]} data
+* @returns {number} data.id - ID
+* @returns {string} data.title - ã‚¿ã‚¤ãƒˆãƒ«
+* @returns {string} data.text - å†…å®¹
+*/
+router.get('/', function (req, res, next) {
+// å…¨ä»¶å–å¾—ã—ã¦è¿”ã™
+res.json(responseObjectDataAll);
+})
 
 module.exports = router;
