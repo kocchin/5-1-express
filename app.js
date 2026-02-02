@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,7 +11,7 @@ var helloRouter = require('./routes/hello');
 var notesRouter = require('./routes/notes');
 var catRouter = require('./routes/cat');
 var dogRouter = require('./routes/dog');
-
+var notes_from_bRouter = require('./routes/notes_from_b');
 var app = express();
 
 // view engine setup
@@ -29,7 +30,7 @@ app.use('/hello', helloRouter);
 app.use('/notes', notesRouter);
 app.use('/cat', catRouter);
 app.use('/dog', dogRouter);
-
+app.use('/notes_from_b',notes_from_bRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
